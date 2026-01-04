@@ -22,6 +22,7 @@
         nvd
         feishin
         firefox
+        ladybird
         lutris-free
         starship
 	      kdePackages.kate
