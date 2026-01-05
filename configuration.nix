@@ -93,6 +93,7 @@
         displayManager.sddm.enable = true;
         tailscale.enable = true;
         fprintd.enable = true;
+        flatpack.enable = true;
 
         # --btrfs--
         btrfs.autoScrub = {
