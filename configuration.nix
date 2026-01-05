@@ -30,6 +30,7 @@
         ladybird
         lutris-free
         starship
+        motrix
 	      kdePackages.kate
 	      gnomeExtensions.night-theme-switcher
 
@@ -93,7 +94,10 @@
         displayManager.sddm.enable = true;
         tailscale.enable = true;
         fprintd.enable = true;
-        flatpack.enable = true;
+        flatpak.enable = true;
+        flatpak.packages = [
+          "io.github.revisto.drum-machine"
+        ];
 
         # --btrfs--
         btrfs.autoScrub = {
