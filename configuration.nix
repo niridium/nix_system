@@ -3,85 +3,21 @@
 {
     imports = [
         ./hardware-configuration.nix
+        ./boot.nix
+        ./dev.nix
+        ./network.nix
+        ./packages.nix
+        ./flatpak.nix
+        ./misc.nix
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings.auto-optimise-store = true;
     nix.gc = {
         automatic = true;
         dates = "weekly";
         options = "--delete-older-than 7d";
       };
-
-    i18n.defaultLocale = "en_US.UTF-8";
-
-    environment.systemPackages = with pkgs; [
-        btop
-        fastfetch
-        git
-        neovim
-	      noto-fonts
-	      noto-fonts-color-emoji
-	      noto-fonts-monochrome-emoji
-	      noto-fonts-cjk-sans
-        nil
-        nvd
-        feishin
-        firefox
-        ladybird
-        lutris-free
-        starship
-        motrix
-	      kdePackages.kate
-	      gnomeExtensions.night-theme-switcher
-
-        # LazyVim setup
-	      vimPlugins.LazyVim
-        python3
-        luajitPackages.luarocks
-        lua51Packages.lua
-        ripgrep
-        fd
-        lazygit
-        fzf
-        gcc
-        unzip
-        wget
-        ghostty
-        imagemagick
-        git-spice
-        tectonic
-        mermaid-cli
-        sqlite
-#        kdePackages.yakuake
-#        kdePackages.filelight
-    ];
-
-    # --Filesystem--
-    nix.settings.auto-optimise-store = true; # Create hard links
-
-    fileSystems = {
-        "/".options = [ "compress=zstd" ];
-    };
-
-    swapDevices = [{
-        device = "/var/lib/swapfile";
-        size = 6*1024; # 6G
-    }];
-    # --------------
-
-    boot = {
-        loader.systemd-boot.enable = true;
-        loader.efi.canTouchEfiVariables = true;
-        kernelPackages = pkgs.linuxPackages_latest;
-        kernelParams = [
-            "zswap.enabled=1"
-            "zswap.compressor=zstd"
-            "zswap.max_pool_percent=20"
-            "zswap.shrinker_enabled=1"
-        ];
-    };
-
-    networking = { hostName = "nixos"; networkmanager.enable = true; };
 
     users.users.nixy = {
             isNormalUser = true;
@@ -94,23 +30,6 @@
         displayManager.sddm.enable = true;
         tailscale.enable = true;
         fprintd.enable = true;
-        flatpak.enable = true;
-        flatpak.packages = [
-          "io.github.revisto.drum-machine"
-        ];
-
-        # --btrfs--
-        btrfs.autoScrub = {
-            enable = true;
-            fileSystems = [ "/"];
-        };
-        beesd.filesystems.root = {
-            spec = "LABEL=nixos";
-            hashTableSizeMB = 512;
-            verbosity = "info";
-            extraOptions = [ "--loadavg-target" "5.0" ];
-        };
-        # ---------
     };
 
     programs = {
@@ -148,14 +67,6 @@
             gc = "sudo nix-collect-garbage --delete-older-than 7d && nix-collect-garbage --delete-older-than 7d";
         };
     };
-
-    time.timeZone = "Europe/Madrid";
-
-    console = {
-        keyMap = "colemak";
-    };
-
-    hardware.bluetooth.enable = true;
 
     system.stateVersion = "25.11";
 }
