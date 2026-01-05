@@ -85,7 +85,7 @@
     users.users.nixy = {
             isNormalUser = true;
             home = "/home/nixy";
-            extraGroups = [ "wheel" ];
+            extraGroups = [ "wheel" "gamemode" ];
     };
 
     services = {
@@ -109,6 +109,7 @@
     };
 
     programs = {
+      gamemode.enable = true;
       starship.enable = true;
 	    neovim = {
 	      enable = true;
