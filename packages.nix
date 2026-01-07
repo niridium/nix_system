@@ -26,6 +26,7 @@
     git
     feishin
     motrix
+    cava
     # Code editors
     neovim
     kdePackages.kate

@@ -33,21 +33,22 @@
     };
 
     programs = {
-      gamemode.enable = true;
-      starship.enable = true;
-	    neovim = {
-	      enable = true;
-	      defaultEditor = true;
-	      viAlias = true;
-	      vimAlias = true;
-	    };
-    	ssh = {
+        gamemode.enable = true;
+        starship.enable = true;
+        neovim = {
+            enable = true;
+            defaultEditor = true;
+            viAlias = true;
+            vimAlias = true;
+        };
+        ssh = {
             startAgent = true;
             extraConfig = "
             Host btarch
                 Hostname 192.168.18.8
                 Port 22
                 User barchy
+                IdentityFile /home/nixy/.ssh/btarch
             Host tsbtarch
                 Hostname 100.68.169.70
                 Port 22
@@ -63,7 +64,7 @@
             preferences = { "widget.use-xdg-desktop-portal.file-picker" = 1; };
         };
         bash.shellAliases = {
-            updiff = "nixos-rebuild build --upgrade --sudo && nvd diff /run/current-system result";
+            build = "pushd ~/nixos && nix flake update && nixos-rebuild build --upgrade --sudo && nvd diff /run/current-system result && popd";
             switch = "nixos-rebuild switch --sudo";
             please = "sudo !!";
         };
