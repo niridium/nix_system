@@ -64,7 +64,7 @@
             preferences = { "widget.use-xdg-desktop-portal.file-picker" = 1; };
         };
         bash.shellAliases = {
-            build = "pushd ~/nixos && nix flake update && nixos-rebuild build --upgrade --sudo && nvd diff /run/current-system result && popd";
+            build = "pushd ~/nixos && nix flake update && nixos-rebuild build && nvd diff /run/current-system result && popd";
             switch = "nixos-rebuild switch --sudo";
             please = "sudo !!";
         };
