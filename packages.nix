@@ -14,10 +14,6 @@
     # Web browsers
     firefox
     ladybird
-    # Fonts
-    noto-fonts
-    noto-fonts-monochrome-emoji
-    noto-fonts-cjk-sans
     # Terminal
     ghostty
     starship
@@ -34,4 +30,10 @@
     package-version-server
   ];
 
+  fonts.enableDefaultPackages = true;
+  fonts.packages = with pkgs; [
+    nerd-fonts.iosevka
+    nerd-fonts.iosevka-term
+  ];
+  fonts.fontconfig.useEmbeddedBitmaps = true;
 }
