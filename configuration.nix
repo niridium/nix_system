@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
     imports = [
@@ -33,6 +33,13 @@
     };
 
     programs = {
+        neovim = {
+            configure = {
+                packages.all.start = with pkgs.vimPlugins; [
+                    nvim-treesitter.withAllGrammars
+                ];
+            };
+        };
         gamemode.enable = true;
         starship.enable = true;
         neovim = {
