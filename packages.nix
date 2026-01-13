@@ -26,9 +26,10 @@
     handbrake
     # Code editors
     neovim
+    helix
     kdePackages.kate
     #zed-editor
-    package-version-server
+    #package-version-server
   ];
 
   fonts.enableDefaultPackages = true;
