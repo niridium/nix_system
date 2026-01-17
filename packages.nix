@@ -10,6 +10,8 @@
     nvd
     # Gaming
     lutris-free
+    wineWow64Packages.staging
+    winetricks
     mangohud
     # Web browsers
     firefox
