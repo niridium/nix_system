@@ -81,6 +81,10 @@
                 Hostname codeberg.org
                 User git
                 IdentityFile /home/nixy/.ssh/codeberg
+            Host github.com
+                HostName github.com
+                User git
+                IdentityFile /home/nixy/.ssh/github
             ";
     };
     firefox = {
