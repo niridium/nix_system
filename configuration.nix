@@ -46,6 +46,13 @@
     displayManager.sddm.enable = true;
     tailscale.enable = true;
     tailscale.disableUpstreamLogging = true;
+    syncthing.enable = true;
+    syncthing.settings = {
+      gui = {
+        user = "nixy";
+        password = "126436";
+      };
+    };
     fprintd.enable = true;
   };
 
@@ -96,6 +103,7 @@
     bash.shellAliases = {
       build = "pushd ~/nixos && nix flake update && nixos-rebuild build && nvd diff /run/current-system result && popd";
       switch = "nixos-rebuild switch --sudo";
+      bswitch = "build && switch";
       please = "sudo !!";
     };
   };

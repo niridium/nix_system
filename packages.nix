@@ -23,9 +23,8 @@
     # Other
     git
     feishin
-    motrix
     haruna
-    handbrake
+    keepassxc
     # Code editors
     neovim
     helix
