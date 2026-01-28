@@ -6,10 +6,12 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
-  { self, nixpkgs, nix-flatpak, home-manager }:
+  { self, nixpkgs, nix-flatpak, home-manager, nix-index-database }:
   {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -21,6 +23,7 @@
           home-manager.useUserPackages = true;
           home-manager.users.nixy = ./home.nix;
         }
+        nix-index-database.nixosModules.default
       ];
     };
   };

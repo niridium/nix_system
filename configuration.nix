@@ -50,6 +50,12 @@
     fprintd.enable = true;
   };
 
+  virtualisation.docker = {
+    enable = true;
+    rootless.enable = true;
+    rootless.setSocketVariable = true;
+  };
+
   programs = {
     neovim = {
       configure = {

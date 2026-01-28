@@ -13,8 +13,14 @@
         "pixel6" = { id = "4VGTGWP-F3ENL55-4PKBV4V-72JG2AR-6E2E5IU-NKSH6BJ-6LXVBC2-CI2ZJA7"; };
       };
       folders = {
-        "Keepass".path = "/home/nixy/Keepass";
-        "Keepass".devices = [ "pixel6" ];
+        "Keepass" = {
+          path = "/home/nixy/Keepass";
+          devices = [ "pixel6" ];
+        };
+        "Share" = {
+          path = "/home/nixy/Share";
+          devices = [ "pixel6" ];
+        };
       };
     };
   };

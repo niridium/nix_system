@@ -16,6 +16,7 @@
     # Web browsers
     firefox
     ladybird
+    ungoogled-chromium
     # Terminal
     ghostty
     starship
@@ -25,6 +26,7 @@
     feishin
     haruna
     keepassxc
+    appimage-run
     # Code editors
     neovim
     helix
