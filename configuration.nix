@@ -77,6 +77,7 @@
     fzf
     # Media
     feishin
+    kdePackages.elisa
     haruna
     # Tools
     git
