@@ -18,7 +18,6 @@
     }:
     {
       nixosConfigurations.vega = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         modules = [
           ./configuration.nix
           nix-flatpak.nixosModules.nix-flatpak
