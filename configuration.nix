@@ -65,6 +65,11 @@
     ];
   };
 
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
+
   environment.gnome.excludePackages = [
     pkgs.epiphany
     pkgs.gnome-text-editor
@@ -96,10 +101,11 @@
     pkgs.winetricks
     pkgs.mangohud
     pkgs.moonlight-qt
+    pkgs.protonplus
     # Web browsers
     pkgs.firefox
     pkgs.ladybird
-    # inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     # Terminal
     pkgs.starship
     pkgs.fzf
@@ -111,6 +117,8 @@
     pkgs.keepassxc
     pkgs.appimage-run
     pkgs.libimobiledevice
+    pkgs.bottles
+    pkgs.distrobox
     # Code editors
     pkgs.helix
     pkgs.zed-editor
@@ -147,6 +155,7 @@
     # displayManager.sddm.enable = true;
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
+    fwupd.enable = true;
     tailscale.enable = true;
     tailscale.disableUpstreamLogging = true;
     fprintd.enable = true;
