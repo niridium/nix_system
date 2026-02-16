@@ -65,9 +65,12 @@
     ];
   };
 
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+      dockerCompat = true;
+    };
+    libvirtd.enable = true;
   };
 
   environment.gnome.excludePackages = [
@@ -97,6 +100,9 @@
     pkgs.nvd
     # Gaming
     pkgs.lutris-free
+    (pkgs.lutris-free.override {
+      extraPkgs = pkgs: [ pkgs.gamemode ];
+    })
     pkgs.wineWow64Packages.staging
     pkgs.winetricks
     pkgs.mangohud
@@ -160,6 +166,8 @@
     tailscale.disableUpstreamLogging = true;
     fprintd.enable = true;
     usbmuxd.enable = true;
+    qemuGuest.enable = true;
+    spice-vdagentd.enable = true;
     btrfs.autoScrub = {
       enable = true;
       fileSystems = [ "/" ];
@@ -206,6 +214,7 @@
   };
 
   programs = {
+    virt-manager.enable = true;
     gamemode.enable = true;
     starship.enable = true;
     ssh = {
