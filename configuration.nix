@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   lib,
@@ -47,9 +48,19 @@
     PATH = "\${PATH}:/home/nixy/.local/bin:/home/nixy/bash_scripts:/home/nixy/synclone";
   };
 
+  sops = {
+    defaultSopsFile = ./secrets/secrets.yaml;
+    age.sshKeyPaths = [ "/home/nixy/.ssh/id_ed25519" ];
+    age.keyFile = "/home/nixy/.config/sops/age/keys.txt";
+    age.generateKey = true;
+    secrets."nixy_password" = {};
+    secrets."nixy_password".neededForUsers = true;
+  };
+
   users.users.nixy = {
     isNormalUser = true;
     home = "/home/nixy";
+    hashedPasswordFile = config.sops.secrets."nixy_password".path;
     extraGroups = [
       "wheel"
       "gamemode"
@@ -123,8 +134,8 @@
     pkgs.keepassxc
     pkgs.appimage-run
     pkgs.libimobiledevice
-    pkgs.bottles
     pkgs.distrobox
+    pkgs.agenix-cli
     # Code editors
     pkgs.helix
     pkgs.zed-editor

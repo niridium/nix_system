@@ -2,10 +2,16 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -14,7 +20,8 @@
     nixpkgs,
     nix-flatpak,
     nix-index-database,
-    zen-browser
+    zen-browser,
+    sops-nix
   } @ inputs:
   {
     nixosConfigurations.vega = nixpkgs.lib.nixosSystem {
@@ -25,6 +32,7 @@
         ./configuration.nix
         nix-flatpak.nixosModules.nix-flatpak
         nix-index-database.nixosModules.default
+        sops-nix.nixosModules.default
       ];
     };
   };

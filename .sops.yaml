@@ -1,0 +1,7 @@
+keys:
+  - &admin_nixy age18as6fe55fjr4xdasgelxl55ur8fayzrw2cmh4knhkrm6acwjjecshhmppg
+creation_rules:
+  - path_regex: secrets/secrets.yaml
+    key_groups:
+    - age:
+      - *admin_nixy
