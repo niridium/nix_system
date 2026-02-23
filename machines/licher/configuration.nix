@@ -41,7 +41,7 @@
         Host codeberg.org
           HostName codeberg.org
           User git
-          IdentityFile /home/lich/.ssh/codeberg
+          IdentityFile /home/nixy/.ssh/codeberg
     ";
   };
 
