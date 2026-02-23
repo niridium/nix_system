@@ -29,10 +29,15 @@
         inherit inputs;
       };
       modules = [
-        ./configuration.nix
+        ./machines/vega/configuration.nix
         nix-flatpak.nixosModules.nix-flatpak
         nix-index-database.nixosModules.default
         sops-nix.nixosModules.default
+      ];
+    };
+    nixosConfigurations.licher = nixpkgs.lib.nixosSystem {
+      modules = [
+        ./configuration.nix
       ];
     };
   };

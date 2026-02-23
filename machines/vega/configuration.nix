@@ -1,16 +1,16 @@
 {
-  config,
   inputs,
   pkgs,
-  lib,
   ...
 }:
 
 {
+  imports = [
+    ../../common.nix
+    ./hardware-configuration.nix
+  ];
+
   boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
       "zswap.enabled=1"
       "zswap.compressor=zstd"
@@ -24,55 +24,21 @@
       size = 24 * 1024;
     }
   ];
-  fileSystems."/".options = [ "compress=zstd" ];
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocales = "all";
-  environment.sessionVariables.LANG = lib.mkForce null; # Should fix locales not appearing
-  console.keyMap = "colemak";
-  time.timeZone = "Europe/Madrid";
   powerManagement.powertop.enable = true;
-  security.rtkit.enable = true;
   hardware.bluetooth.enable = true;
 
   networking = {
     hostName = "vega";
-    networkmanager.enable = true;
     networkmanager.wifi.powersave = true;
-    networkmanager.dns = "none";
-    nameservers = [
-      "194.242.2.3" # Mullvad DNS
-    ];
   };
 
   environment.variables = {
     PATH = "\${PATH}:/home/nixy/.local/bin:/home/nixy/bash_scripts:/home/nixy/synclone";
   };
 
-  sops = {
-    defaultSopsFile = ./secrets/secrets.yaml;
-    age.sshKeyPaths = [ "/home/nixy/.ssh/id_ed25519" ];
-    age.keyFile = "/home/nixy/.config/sops/age/keys.txt";
-    age.generateKey = true;
-    secrets."nixy_password" = {};
-    secrets."nixy_password".neededForUsers = true;
-  };
-
   users.users.nixy = {
-    isNormalUser = true;
-    home = "/home/nixy";
-    hashedPasswordFile = config.sops.secrets."nixy_password".path;
     extraGroups = [
       "wheel"
-      "gamemode"
-    ];
-  };
-
-  fonts = {
-    enableDefaultPackages = true;
-    fontconfig.useEmbeddedBitmaps = true;
-    packages = with pkgs; [
-      nerd-fonts.iosevka
-      nerd-fonts.iosevka-term
     ];
   };
 
@@ -110,17 +76,8 @@
     pkgs.nil
     pkgs.nvd
     # Gaming
-    pkgs.lutris-free
-    (pkgs.lutris-free.override {
-      extraPkgs = pkgs: [ pkgs.gamemode ];
-    })
-    pkgs.wineWow64Packages.staging
-    pkgs.winetricks
-    pkgs.mangohud
     pkgs.moonlight-qt
-    pkgs.protonplus
     # Web browsers
-    pkgs.firefox
     pkgs.ladybird
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     # Terminal
@@ -135,31 +92,11 @@
     pkgs.appimage-run
     pkgs.libimobiledevice
     pkgs.distrobox
-    pkgs.agenix-cli
     # Code editors
     pkgs.helix
     pkgs.zed-editor
     pkgs.package-version-server
   ];
-
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
-  nix = {
-    settings = {
-      auto-optimise-store = true;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
 
   qt = {
     enable = true;
@@ -168,8 +105,6 @@
   };
 
   services = {
-    # desktopManager.plasma6.enable = true;
-    # displayManager.sddm.enable = true;
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
     fwupd.enable = true;
@@ -255,26 +190,6 @@
       bswitch = "build && switch";
       please = "sudo !!";
     };
-    dconf.profiles.user.databases = [
-      {
-        settings = {
-          "org/gnome/mutter" = {
-            experimental-features = [
-              "variable-refresh-rate"
-              "xwayland-native-scaling"
-              "autoclose-xwayland"
-            ];
-          };
-        };
-      }
-    ];
-    firefox = {
-      enable = true;
-      preferences = {
-        "widget.use-xdg-desktop-portal.file-picker" = 1;
-      };
-    };
   };
-
   system.stateVersion = "25.11";
 }
