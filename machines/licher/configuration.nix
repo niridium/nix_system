@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 {
   imports = [
     ../../common.nix
@@ -17,7 +17,11 @@
     ];
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   environment.systemPackages = [
+    pkgs.nvd
+    pkgs.nil
     pkgs.git
     pkgs.helix
     pkgs.mdadm

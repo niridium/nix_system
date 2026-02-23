@@ -31,7 +31,6 @@
     defaultSopsFile = ./secrets/secrets.yaml;
     age.sshKeyPaths = [ "/home/nixy/.ssh/id_ed25519" ];
     age.keyFile = "/home/nixy/.config/sops/age/keys.txt";
-    age.generateKey = true;
     secrets."nixy_password" = {};
     secrets."nixy_password".neededForUsers = true;
   };
@@ -40,6 +39,13 @@
     isNormalUser = true;
     home = "/home/nixy";
     hashedPasswordFile = config.sops.secrets."nixy_password".path;
+  };
+
+  programs.bash.shellAliases = {
+    build = "pushd ~/nixos && nix flake update && nixos-rebuild build && nvd diff /run/current-system result && popd";
+    switch = "nixos-rebuild switch --sudo";
+    bswitch = "build && switch";
+    please = "sudo !!";
   };
 
   fonts = {

@@ -37,7 +37,8 @@
     };
     nixosConfigurations.licher = nixpkgs.lib.nixosSystem {
       modules = [
-        ./configuration.nix
+        ./machines/licher/configuration.nix
+        sops-nix.nixosModules.default
       ];
     };
   };
