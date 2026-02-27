@@ -100,6 +100,8 @@
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
     fwupd.enable = true;
+    openssh.enable = true;
+    openssh.openFirewall = false;
     tailscale = {
       enable = true;
       disableUpstreamLogging = true;
