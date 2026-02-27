@@ -71,6 +71,9 @@ in
       enable = true;
       disableUpstreamLogging = true;
       permitCertUid = "caddy";
+      # extraSetFlags = [
+      #   "--advertise-exit-node"
+      # ];
     };
     # caddy = {
     #   enable = true;
