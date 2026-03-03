@@ -188,6 +188,12 @@ in
                 url = "https://redlib.sole-alkaid.ts.net";
                 check-url = "http://localhost:8080";
                 icon = "di:redlib";
+                }
+                {
+                title = "Invidious";
+                url = "https://invidious.sole-alkaid.ts.net";
+                check-url = "http://localhost:2560";
+                icon = "di:invidious";
                 }];
               }
               {
