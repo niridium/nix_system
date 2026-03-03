@@ -10,6 +10,7 @@ let
     "europe"
     "wine_gaming"
   ];
+  invidious_companion_key = config.sops.secrets."invidious_companion_key".path;
 in
 {
   imports = [
@@ -43,6 +44,24 @@ in
     pkgs.winetricks
   ];
 
+  virtualisation.docker.enable = true;
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers = {
+      # Workaround until invidious-companion gets packaged
+      invidious-companion = {
+        image = "quay.io/invidious/invidious-companion:latest";
+        ports = ["127.0.0.1:8282:8282"];
+        volumes = [
+          "companioncache:/var/tmp/youtubei.js:rw"
+        ];
+        environment = {
+          # SERVER_SECRET_KEY = "yo9yoadailah7Thi";
+          SERVER_SECRET_KEY = "${invidious_companion_key}";
+        };
+      };
+    };  
+  };
   programs = {
     starship.enable = true;
     steam.enable = true;
@@ -235,14 +254,20 @@ in
         REDLIB_DEFAULT_SUBSCRIPTIONS = builtins.concatStringsSep "+" subreddits;
       };
     };
-    # invidious = {
-    #   enable = true;
-    #   sig-helper.enable = true;
-    #   port = 2560;
-    #   address = "127.0.0.1";
-    #   settings = {
-    #   };
-    # };
+    invidious = {
+      enable = true;
+      sig-helper.enable = false;
+      port = 2560;
+      # address = "127.0.0.1";
+      settings = {
+        invidious_companion = [
+          {
+            private_url = "http://localhost:8282/companion";
+          }
+        ];
+        invidious_companion_key = "yo9yoadailah7Thi";
+      };
+    };
     jellyfin.enable = true;
     actual.enable = true;
   };
