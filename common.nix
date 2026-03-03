@@ -32,6 +32,7 @@
     age.sshKeyPaths = [ "/home/nixy/.ssh/id_ed25519" ];
     age.keyFile = "/home/nixy/.config/sops/age/keys.txt";
     secrets."nixy_password" = {};
+    secrets."invidious_companion_key" = {};
     secrets."nixy_password".neededForUsers = true;
   };
 
