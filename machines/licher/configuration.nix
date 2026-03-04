@@ -10,7 +10,6 @@ let
     "europe"
     "wine_gaming"
   ];
-  invidious_companion_key = config.sops.secrets."invidious_companion_key".path;
 in
 {
   imports = [
@@ -56,8 +55,8 @@ in
           "companioncache:/var/tmp/youtubei.js:rw"
         ];
         environment = {
-          # SERVER_SECRET_KEY = "yo9yoadailah7Thi";
-          SERVER_SECRET_KEY = "${invidious_companion_key}";
+          SERVER_SECRET_KEY = "yo9yoadailah7Thi";
+          # SERVER_SECRET_KEY = config.sops.secrets."invidious_companion_key".path;
         };
       };
     };  
@@ -120,21 +119,6 @@ in
         extraOptions = [ "--loadavg-target" "5.0" ];
       };
     };
-    # webdav = {
-    #   enable = true;
-    #   settings = {
-    #     address = "0.0.0.0";
-    #     port = 6565;
-    #     directory = "/storage/public";
-    #     permissions = "RC";
-    #     users = [
-    #       {
-    #         username = "nixy";
-    #         password = "1234";
-    #       }
-    #     ];
-    #   };
-    # };
     glance = {
       enable = true;
       settings = {
