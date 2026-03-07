@@ -9,6 +9,7 @@
     ../../common.nix
     ../../packages.nix
     ./hardware-configuration.nix
+    # ./gnome.nix
   ];
 
   boot = {
@@ -25,16 +26,17 @@
       size = 24 * 1024;
     }
   ];
+
   powerManagement.powertop.enable = true;
-  hardware.bluetooth.enable = true;
-  hardware.i2c.enable = true;
+  hardware = {
+    bluetooth.enable = true;
+    i2c.enable = true; # Backlight control
+  };
 
   networking = {
     hostName = "vega";
     networkmanager.wifi.powersave = true;
   };
-
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   users.users.nixy = {
     extraGroups = [
@@ -51,61 +53,30 @@
     # libvirtd.enable = true;
   };
 
-  # environment.gnome.excludePackages = [
-  #   pkgs.epiphany
-  #   pkgs.gnome-text-editor
-  #   pkgs.gnome-characters
-  #   pkgs.gnome-contacts
-  #   pkgs.gnome-font-viewer
-  #   pkgs.gnome-maps
-  #   pkgs.gnome-music
-  #   pkgs.gnome-system-monitor
-  #   pkgs.gnome-weather
-  #   pkgs.gnome-connections
-  #   pkgs.simple-scan
-  #   pkgs.yelp
-  # ];
-
   environment.systemPackages = [
-    # Gnome
-    # pkgs.gnomeExtensions.night-theme-switcher
-    # pkgs.gnomeExtensions.appindicator
-    # pkgs.gnome-tweaks
-    # pkgs.gnome-console
-    # Gaming
+    ### Gaming
     pkgs.moonlight-qt
-    # Web browsers
+    ### Web browsers
     pkgs.ladybird
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    # Media
+    ### Media
     pkgs.feishin
     pkgs.blanket
-    # Tools
+    ### Tools
     pkgs.keepassxc
     pkgs.appimage-run
-    # pkgs.libimobiledevice
+    pkgs.ddcutil # Backlight control
+    pkgs.jq # dpswitch.sh
     pkgs.distrobox
-    # Code editors
+    ### Code editors
     # pkgs.zed-editor
     # pkgs.package-version-server
-    pkgs.ddcutil
-    pkgs.jq
   ];
 
-  # qt = {
-  #   enable = true;
-  #   platformTheme = "gnome";
-  #   style = "adwaita-dark";
-  # };
-
   services = {
-    # displayManager.gdm.enable = true;
-    # desktopManager.gnome.enable = true;
     power-profiles-daemon.enable = true;
     upower.enable = true;
     fwupd.enable = true;
-    openssh.enable = true;
-    openssh.openFirewall = false;
     tailscale = {
       enable = true;
       disableUpstreamLogging = true;
@@ -130,27 +101,6 @@
         "5.0"
       ];
     };
-    # pipewire.extraConfig = {
-    #   pipewire."92-sunshine" = {
-    #     "context.properties" = {
-    #       "default.clock.rate" = 44100;
-    #     };
-    #   };
-    #   pipewire-pulse."92-sunshine" = {
-    #     context.modules = [
-    #       {
-    #         name = "libpipewire-module-protocol-pulse";
-    #         args = {
-    #           pulse.min.req = "32/44100";
-    #           pulse.default.req = "32/44100";
-    #           pulse.max.req = "32/44100";
-    #           pulse.min.quantum = "32/44100";
-    #           pulse.max.quantum = "32/44100";
-    #         };
-    #       }
-    #     ];
-    #   };
-    # };
     # flatpak = {
     #   enable = true;
     #   packages = [
@@ -185,24 +135,6 @@
       enable = true;
     };
     # virt-manager.enable = true;
-    gamemode.enable = true;
-    starship.enable = true;
-    ssh = {
-      # startAgent = true;
-      extraConfig = "
-            Host licher
-                Hostname 100.70.166.15
-                User nixy
-            Host codeberg.org
-                Hostname codeberg.org
-                User git
-                IdentityFile /home/nixy/.ssh/codeberg
-            Host github.com
-                HostName github.com
-                User git
-                IdentityFile /home/nixy/.ssh/github
-            ";
-    };
   };
   system.stateVersion = "25.11";
 }

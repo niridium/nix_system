@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 
 {
   boot = {
@@ -32,8 +28,8 @@
     age.sshKeyPaths = [ "/home/nixy/.ssh/id_ed25519" ];
     age.keyFile = "/home/nixy/.config/sops/age/keys.txt";
     secrets."nixy_password" = {};
-    secrets."invidious_companion_key" = {};
-    secrets."nextcloud_password" = {};
+    # secrets."invidious_companion_key" = {};
+    # secrets."nextcloud_password" = {};
     secrets."nixy_password".neededForUsers = true;
   };
 
@@ -43,20 +39,6 @@
     hashedPasswordFile = config.sops.secrets."nixy_password".path;
   };
 
-  programs.bash = {
-    shellAliases = {
-      gupdate = "pushd ~/nixos && nix flake update && nixos-rebuild build && nvd diff /run/current-system result && popd";
-      switch = "nixos-rebuild switch --sudo";
-      update = "gupdate && switch";
-    };
-    promptInit =
-    ''
-      eval "$(fzf --bash)"
-      function pkgv {
-        realpath $(which $1)
-      }
-    ''; # This is equivalent to .bashrc
-  };
   fonts = {
     enableDefaultPackages = true;
     fontconfig.useEmbeddedBitmaps = true;

@@ -54,7 +54,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.nixy = ./home.nix;
+          home-manager.users.nixy = ./machines/vega/home/home.nix;
           home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.backupFileExtension = "bkp";
         }
@@ -65,6 +65,14 @@
       modules = [
         ./machines/licher/configuration.nix
         sops-nix.nixosModules.default
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.nixy = ./machines/licher/home.nix;
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.backupFileExtension = "bkp";
+        }
       ];
     };
   };

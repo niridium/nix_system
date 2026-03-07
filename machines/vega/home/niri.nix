@@ -1,23 +1,6 @@
-{ pkgs, inputs, ... }:
-
+{ pkgs, ... }:
 {
-  imports = [
-    inputs.noctalia.homeModules.default
-    # ./niri.nix
-  ];
-
-  home.username = "nixy";
-  home.homeDirectory = "/home/nixy";
-  home.stateVersion = "25.11";
-
-  programs.home-manager.enable = true;  
-
-  home.sessionPath = [
-    "$HOME/nixos"
-  ];
   programs = {
-    ghostty.enable = true;
-    noctalia-shell.enable = true;
     niri = {
       package = pkgs.niri;
       settings = {
@@ -28,7 +11,6 @@
             ];
           }
         ];
-        debug.honor-xdg-activation-with-invalid-serial = [];
         input.keyboard.xkb = {
           layout = "us";
           variant = "colemak";
@@ -51,7 +33,6 @@
         # };
         layout = {
           gaps = 16;
-          
         };
         hotkey-overlay.skip-at-startup = true;
         binds = {
@@ -95,8 +76,4 @@
       };
     };
   };
-  # services = {
-  #   mako.enable = true;
-  #   swayidle.enable = true;
-  #   polkit-gnome.enable = true;
 }
