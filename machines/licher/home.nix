@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../../home-manager/bash.nix
     ../../home-manager/home.nix
+    ../../home-manager/bash.nix
   ];
 
   home.username = "nixy";
@@ -16,5 +16,8 @@
   programs = {
     home-manager.enable = true;  
     ghostty.enable = true;
+    starship.enable = true;
+    zoxide.enable = true;
+    fzf.enable = true;
   };
 }
