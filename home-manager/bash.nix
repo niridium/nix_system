@@ -9,8 +9,6 @@
     };
     bashrcExtra =
     ''
-      eval "$(fzf --bash)"
-
       # Check package version from store
       function pkgv {
         realpath $(which $1)

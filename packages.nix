@@ -10,8 +10,6 @@
     pkgs.nil
     pkgs.helix
     pkgs.btop
-    pkgs.starship
-    pkgs.fzf
     pkgs.fastfetch
   ];
 }
