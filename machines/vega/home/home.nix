@@ -3,10 +3,8 @@
 {
   imports = [
     inputs.noctalia.homeModules.default
-    ../../../home-manager/home.nix
-    ../../../home-manager/bash.nix
+    ../../../shared_home
     ./niri.nix
-    # ./ssh.nix
   ];
 
   home = {
@@ -31,8 +29,9 @@
 
   programs = {
     home-manager.enable = true;  
-    ghostty.enable = true;
     noctalia-shell.enable = true;
+    ghostty.enable = true;
+    yazi.enable = true;
     starship.enable = true;
     zoxide.enable = true;
     fzf.enable = true;

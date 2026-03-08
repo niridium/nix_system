@@ -22,20 +22,4 @@
       };
     };
   };
-  programs.git = {
-    enable = true;
-    settings = {
-      init.defaultBranch = "main";
-      core.editor = "hx";
-      user = {
-        name = "focusgraph";
-        email = "ruben.ledesma.go@protonmail.com";
-      };
-      gpg.format = "ssh";
-    };
-    signing = {
-      key = "/home/nixy/.ssh/id_ed25519.pub";
-      signByDefault = true;
-    };
-  };
 }

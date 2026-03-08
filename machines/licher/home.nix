@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ../../home-manager/home.nix
-    ../../home-manager/bash.nix
+    ../../shared_home
   ];
 
   home.username = "nixy";
