@@ -11,13 +11,13 @@
       "codeberg.org" = {
         hostname = "codeberg.org";
         user = "git";
-        identityFile = "/home/nixy/.ssh/codeberg";
+        # identityFile = "/home/nixy/.ssh/codeberg";
         addKeysToAgent = "yes";
       };
       "github.com" = {
         hostname = "github.com";
         user = "git";
-        identityFile = "/home/nixy/.ssh/github";
+        # identityFile = "/home/nixy/.ssh/github";
         addKeysToAgent = "yes";
       };
     };
@@ -34,6 +34,7 @@
       gpg.format = "ssh";
     };
     signing = {
+      key = "/home/nixy/.ssh/id_ed25519.pub";
       signByDefault = true;
     };
   };

@@ -31,11 +31,6 @@
 
   programs = {
     home-manager.enable = true;  
-    git = {
-      signing = {
-        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGqBzty7pFZ5a1rBc+G8leMRKqNFezMpJU4Rc3SO3/Hi nixy@vega";
-      };
-    };
     ghostty.enable = true;
     noctalia-shell.enable = true;
     starship.enable = true;
