@@ -3,9 +3,8 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      gupdate = "pushd ~/nixos && nix flake update && nixos-rebuild build && nvd diff /run/current-system result && popd";
-      switch = "nixos-rebuild switch --sudo";
-      update = "gupdate && switch";
+      switch = "pushd ~/nixos && nixos-rebuild build && nvd diff /run/current-system result && nixos-rebuild switch --sudo && popd";
+      update = "pushd ~/nixos && nix flake update && nixos-rebuild build && nvd diff /run/current-system result && nixos-rebuild switch --sudo && popd";
     };
     bashrcExtra =
     ''
