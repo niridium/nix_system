@@ -5,6 +5,7 @@
     inputs.noctalia.homeModules.default
     ../../../shared_home
     ./niri.nix
+    ./yazi.nix
   ];
 
   home = {

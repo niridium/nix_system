@@ -55,7 +55,7 @@
   };
 
   environment.systemPackages = [
-    pkgs.nemo
+    # pkgs.nemo
     ### Gaming
     pkgs.moonlight-qt
     ### Web browsers
