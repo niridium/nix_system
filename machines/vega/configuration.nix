@@ -5,6 +5,7 @@
 }:
 
 {
+  system.stateVersion = "25.11";
   imports = [
     ../../common.nix
     ../../packages.nix
@@ -134,11 +135,15 @@
   };
 
   programs = {
-    regreet.enable = true;
+    regreet = {
+      enable = true;
+      settings = {
+        application_prefer_dark_theme = true;
+      };
+    };
     niri = {
       enable = true;
     };
     # virt-manager.enable = true;
   };
-  system.stateVersion = "25.11";
 }
