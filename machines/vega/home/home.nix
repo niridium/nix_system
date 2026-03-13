@@ -6,6 +6,7 @@
     ../../../shared_home
     ./niri.nix
     ./yazi.nix
+    ./cava.nix
   ];
 
   home = {
