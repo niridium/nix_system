@@ -10,6 +10,8 @@
     ../../common.nix
     ../../packages.nix
     ./hardware-configuration.nix
+    # ./disko-config.nix
+    # ./impermanence.nix
     # ./gnome.nix
   ];
 
@@ -43,13 +45,16 @@
     extraGroups = [
       "wheel"
       "i2c"
+      "podman"
     ];
   };
 
   virtualisation = {
+    containers.enable = true;
     podman = {
       enable = true;
       dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
     };
     # libvirtd.enable = true;
   };

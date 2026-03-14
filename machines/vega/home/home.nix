@@ -4,6 +4,7 @@
   imports = [
     inputs.noctalia.homeModules.default
     ../../../shared_home
+    # ./impermanence.nix
     ./niri.nix
     ./yazi.nix
     ./cava.nix
@@ -24,11 +25,7 @@
     ];
   };
 
-  qt = {
-    enable = true;
-    platformTheme.name = "adwaita";
-    style.name = "adwaita";
-  };
+  # xdg.configFile."feishin/config.json".source = ./feishin.json;
 
   programs = {
     home-manager.enable = true;  
@@ -39,4 +36,11 @@
     zoxide.enable = true;
     fzf.enable = true;
   };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "adwaita";
+    style.name = "adwaita";
+  };
+
 }
