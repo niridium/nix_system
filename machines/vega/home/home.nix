@@ -6,6 +6,7 @@
     ../../../shared_home
     # ./impermanence.nix
     ./niri.nix
+    ./noctalia.nix
     ./yazi.nix
     ./cava.nix
   ];
