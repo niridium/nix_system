@@ -9,6 +9,7 @@
     ./noctalia.nix
     ./yazi.nix
     ./cava.nix
+    ./keepassxc.nix
   ];
 
   home = {
@@ -26,7 +27,7 @@
     ];
   };
 
-  # xdg.configFile."feishin/config.json".source = ./feishin.json;
+  xdg.autostart.enable = true;
 
   programs = {
     home-manager.enable = true;  

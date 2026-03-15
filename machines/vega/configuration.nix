@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  pkgsUnstable,
   ...
 }:
 
@@ -67,10 +68,10 @@
     pkgs.ladybird
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     ### Media
-    pkgs.feishin
+    # pkgs.feishin
     pkgs.blanket
+    pkgsUnstable.gelly
     ### Tools
-    pkgs.keepassxc
     pkgs.appimage-run
     pkgs.ddcutil # Backlight control
     pkgs.jq # dpswitch.sh
