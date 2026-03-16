@@ -11,10 +11,12 @@
     ../../common.nix
     ../../packages.nix
     ./hardware-configuration.nix
-    # ./disko-config.nix
+    ./disko-config.nix
     # ./impermanence.nix
     # ./gnome.nix
   ];
+
+  # fileSystems."/".neededForBoot = true;
 
   boot = {
     kernelParams = [
