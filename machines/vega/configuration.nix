@@ -12,7 +12,7 @@
     ../../packages.nix
     ./hardware-configuration.nix
     ./disko-config.nix
-    # ./impermanence.nix
+    ./impermanence.nix
     # ./gnome.nix
   ];
 

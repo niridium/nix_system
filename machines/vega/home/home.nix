@@ -4,7 +4,7 @@
   imports = [
     inputs.noctalia.homeModules.default
     ../../../shared_home
-    # ./impermanence.nix
+    ./impermanence.nix
     ./niri.nix
     ./noctalia.nix
     ./yazi.nix
