@@ -10,6 +10,7 @@
     ./yazi.nix
     ./cava.nix
     ./keepassxc.nix
+    ./librewolf.nix
   ];
 
   home = {
