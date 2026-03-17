@@ -13,5 +13,9 @@
   home.packages = [
     pkgs.loupe
     pkgs.showtime
+    pkgs.moonlight-qt
+    pkgs.ladybird
+    pkgs.ddcutil
+    pkgs.jq
   ];
 }
