@@ -32,7 +32,10 @@
 
   programs = {
     home-manager.enable = true;  
-    ghostty.enable = true;
+    ghostty = {
+      enable = true;
+      settings = { theme = "noctalia"; };
+    };
     yazi.enable = true;
     starship.enable = true;
     zoxide.enable = true;
