@@ -49,13 +49,6 @@
     ...
   }:
   {
-    # homeConfigurations."nixy" = home-manager.lib.homeManagerConfiguration {
-    #   pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    #   modules = [
-    #     niri.homeModules.niri
-    #     niri.homeModules.config
-    #   ];
-    # };
     nixosConfigurations.vega = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
@@ -65,7 +58,7 @@
         disko.nixosModules.disko
         nix-index-database.nixosModules.default
         sops-nix.nixosModules.default
-        # niri.nixosModules.niri
+        niri.nixosModules.niri
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

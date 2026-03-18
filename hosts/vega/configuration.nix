@@ -1,4 +1,4 @@
-{ pkgsUnstable, ... }:
+{ pkgs, pkgsUnstable, ... }:
 {
   system.stateVersion = "25.11";
   imports = [
@@ -20,9 +20,10 @@
     pkgsUnstable.gelly
   ];
   programs = {
+    niri.enable = true;
     regreet = {
       enable = true;
-      settings.application_prefer_dark_theme = true;
+  #     settings.application_prefer_dark_theme = true;
     };
   };
   powerManagement.powertop.enable = true;
@@ -38,6 +39,13 @@
         "--accept-routes"
       ];
     };
+    # greetd = {
+      # enable = true;
+    #   settings.default_session = {
+    #     command = "niri";
+    #     user = "nixy";
+    #   };
+    # };
   };
   virtualisation = {
     containers.enable = true;
