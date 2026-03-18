@@ -1,6 +1,6 @@
 {
   programs.ghostty = {
     enable = true;
-    settings = { theme = "noctalia"; };
+    # settings = { theme = "noctalia"; };
   };
 }
