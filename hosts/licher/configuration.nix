@@ -37,23 +37,23 @@ in
   ];
   programs.steam.enable = true;
   virtualisation.docker.enable = true;
-  virtualisation.oci-containers = {
-    backend = "docker";
-    containers = {
-      # Workaround until invidious-companion gets packaged
-      invidious-companion = {
-        image = "quay.io/invidious/invidious-companion:latest";
-        ports = ["127.0.0.1:8282:8282"];
-        volumes = [
-          "companioncache:/var/tmp/youtubei.js:rw"
-        ];
-        environment = {
-          SERVER_SECRET_KEY = "yo9yoadailah7Thi";
-          # SERVER_SECRET_KEY = config.sops.secrets."invidious_companion_key".path;
-        };
-      };
-    };  
-  };
+  # virtualisation.oci-containers = {
+  #   backend = "docker";
+  #   containers = {
+  #     # Workaround until invidious-companion gets packaged
+  #     invidious-companion = {
+  #       image = "quay.io/invidious/invidious-companion:latest";
+  #       ports = ["127.0.0.1:8282:8282"];
+  #       volumes = [
+  #         "companioncache:/var/tmp/youtubei.js:rw"
+  #       ];
+  #       environment = {
+  #         SERVER_SECRET_KEY = "yo9yoadailah7Thi";
+  #         # SERVER_SECRET_KEY = config.sops.secrets."invidious_companion_key".path;
+  #       };
+  #     };
+  #   };  
+  # };
   services = {
     desktopManager.plasma6.enable = true;
     displayManager.sddm.enable = true;
