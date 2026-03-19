@@ -12,13 +12,11 @@
       DisableMasterPasswordCreation = true;
       DisablePasswordReveal = true;
       DisplayMenuBar = "never";
+      FirefoxHome.Search = false;
       EnableTrackingProtection = {
         Value = true;
         Category = "strict";
         BaselineExceptions = true;
-      };
-      FirefoxHome = {
-        Search = false;
       };
       PasswordManagerEnabled = false;
       PictureInPictureEnabled = false;
@@ -44,7 +42,9 @@
       };
       bookmarks.force = true;
       bookmarks.settings = [
+        { name = "Redlib"; url = "https://redlib.sole-alkaid.ts.net"; }
         { name = "NixOS Discourse"; url = "https://discourse.nixos.org"; }
+        { name = "NixOS Search"; url = "https://search.nixos.org"; }
       ];     
       settings = {
         "browser.startup.page" = 3;

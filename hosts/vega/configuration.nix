@@ -21,10 +21,7 @@
   ];
   programs = {
     niri.enable = true;
-    regreet = {
-      enable = true;
-  #     settings.application_prefer_dark_theme = true;
-    };
+    regreet.enable = true;
   };
   powerManagement.powertop.enable = true;
   services = {
@@ -39,13 +36,6 @@
         "--accept-routes"
       ];
     };
-    # greetd = {
-      # enable = true;
-    #   settings.default_session = {
-    #     command = "niri";
-    #     user = "nixy";
-    #   };
-    # };
   };
   virtualisation = {
     containers.enable = true;
