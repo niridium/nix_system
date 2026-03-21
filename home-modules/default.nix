@@ -9,6 +9,7 @@
     ./submodules/btop.nix
     ./submodules/yazi.nix
     ./submodules/ghostty.nix
+    ./submodules/eza.nix
   ];
   home = {
     username = "nixy";
