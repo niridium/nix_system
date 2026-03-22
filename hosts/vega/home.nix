@@ -18,5 +18,7 @@
     pkgs.ddcutil
     pkgs.jq
     pkgs.mpv
+    pkgs.jellyfin-tui
+    pkgs.tutanota-desktop
   ];
 }
