@@ -18,11 +18,11 @@
   };
   networking = {
     networkmanager.enable = true;
-    networkmanager.dns = "none";
-    nameservers = [
-      "194.242.2.3" # Mullvad
-      "1.1.1.1" # Cloudflare
-    ];
+  #   networkmanager.dns = "none";
+  #   nameservers = [
+  #     "194.242.2.3" # Mullvad
+  #     "1.1.1.1" # Cloudflare
+  #   ];
   };
   fonts = {
     enableDefaultPackages = true;
