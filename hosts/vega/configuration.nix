@@ -18,6 +18,7 @@
   };
   environment.systemPackages = [
     pkgsUnstable.gelly
+    pkgsUnstable.jellyfin-tui
   ];
   programs = {
     niri.enable = true;
