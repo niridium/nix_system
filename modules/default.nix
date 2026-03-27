@@ -30,5 +30,9 @@
   };
   security.rtkit.enable = true;
 
+  services = {
+    gvfs.enable = true; # Filesystems tool for Nautilus
+  };
+
   environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ]; # Needed when Desktop Environment is installed with Home Manager
 }

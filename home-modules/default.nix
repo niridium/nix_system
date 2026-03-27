@@ -20,8 +20,15 @@
       pkgs.nil
       pkgs.fastfetch
       pkgs.ggshield
+      pkgs.nautilus
     ];
   };
   xdg.autostart.enable = true;
   programs.home-manager.enable = true;
+
+  dconf.enable = true;
+
+  services = {
+    udiskie.enable = true; # Auto mount USB Storage Devices
+  };
 }
