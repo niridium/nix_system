@@ -36,14 +36,14 @@
         enable = true;
         "0100" = {
           enable = true;
-          "0102"."browser.startup.page".value = 3;
+          # "0102"."browser.startup.page".value = 3;
           "0103"."browser.startup.homepage".value = "https://glance.sole-alkaid.ts.net";
           
         };
         "0200".enable = true;
         "0300" = {
           enable = true;
-          "0350"."browser.tabs.crashReporting.sendReport".value = true;
+          # "0350"."browser.tabs.crashReporting.sendReport".value = true;
         };
         "0400".enable = true;
         "0600".enable = true;
@@ -56,15 +56,19 @@
         "1000".enable = true;
         "1200".enable = true;
         "1600".enable = true;
-        "1700".enable = false;
+        "1700".enable = true;
         "2000".enable = true;
         "2400".enable = true;
-        "2600".enable = true;
+        "2600" = {
+          enable = true;
+          # "2651"."browser.download.useDownloadDir".value = true;
+          # "2652"."browser.download.alwaysOpenPanel".value = true;
+        };
         "2700".enable = true;
         "2800" = {
           enable = true;
-          "2811"."privacy.clearOnShutdown_v2.historyFormDataAndDownloads".value = false;
-          "2812"."privacy.clearOnShutdown_v2.browsingHistoryAndDownloads".value = false;
+          # "2811"."privacy.clearOnShutdown_v2.historyFormDataAndDownloads".value = false;
+          # "2812"."privacy.clearOnShutdown_v2.browsingHistoryAndDownloads".value = false;
         };
         "4000".enable = true;
         "4500".enable = true;
