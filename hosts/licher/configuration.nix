@@ -9,6 +9,7 @@
     ../../modules/invidious.nix
     ../../modules/sunshine.nix
     ../../modules/kde.nix
+    ../../modules/tailscale.nix
   ];
   users.users.nixy.extraGroups = [ "wheel" "immich" "input" "video" ];
   networking.hostName = "licher";
@@ -34,10 +35,6 @@
     displayManager.autoLogin = {
       enable = true;
       user = "nixy";
-    };
-    tailscale = {
-      enable = true;
-      disableUpstreamLogging = true;
     };
     btrfs.autoScrub = {
       enable = true;
