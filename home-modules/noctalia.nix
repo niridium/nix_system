@@ -19,7 +19,7 @@
         widgetSpacing = 6;
         contentPadding = 2;
         fontScale = 1;
-        enableExclusionZoneInset = true;
+        enableExclusionZoneInset = false;
         backgroundOpacity = 0.93;
         useSeparateOpacity = false;
         floating = false;
