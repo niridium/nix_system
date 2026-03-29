@@ -1,6 +1,6 @@
 ### TODO
 
-- [ ] Keepass declarative config
+- [x] Keepass declarative config
 
 - [ ] Complete Firefox declarative config
 
