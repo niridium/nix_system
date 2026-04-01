@@ -14,7 +14,7 @@
   home = {
     username = "nixy";
     homeDirectory = "/home/nixy";
-    sessionPath = [ "$HOME/nixos" ];
+    sessionPath = [ "$HOME/nixos" "$HOME/my_scripts" ];
     packages = [
       pkgs.nvd
       pkgs.nil
