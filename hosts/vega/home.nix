@@ -8,7 +8,7 @@
     ../../home-modules/noctalia.nix
     ../../home-modules/cava.nix
     ../../home-modules/keepassxc.nix
-    ../../home-modules/librewolf.nix
+    # ../../home-modules/librewolf.nix
     ../../home-modules/firefox.nix
   ];
   home.packages = [
