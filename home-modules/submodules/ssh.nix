@@ -11,13 +11,15 @@
       "codeberg.org" = {
         hostname = "codeberg.org";
         user = "git";
-        addKeysToAgent = "yes";
       };
       "github.com" = {
         hostname = "github.com";
         user = "git";
-        addKeysToAgent = "yes";
       };
+    };
+    extraOptionOverrides = {
+      "PasswordAuthentication" = "no";
+      "KbdInteractiveAuthentication" = "no";
     };
   };
 }
