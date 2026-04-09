@@ -18,8 +18,11 @@
     packages = [
       pkgs.nvd
       pkgs.nil
+      pkgs.nixd
       pkgs.fastfetch
       pkgs.ggshield
+      pkgs.git-conventional-commits
+      pkgs.pre-commit
       pkgs.nautilus
     ];
   };
@@ -28,7 +31,7 @@
 
   dconf.enable = true;
 
-  services = {
-    udiskie.enable = true; # Auto mount USB Storage Devices
-  };
+  # services = {
+  #   udiskie.enable = true; # Auto mount USB Storage Devices
+  # };
 }
