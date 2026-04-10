@@ -4,6 +4,7 @@
   imports = [
     ../../home-modules
     ../../home-modules/qt.nix
+    ../../home-modules/gtk.nix
     ../../home-modules/niri.nix
     ../../home-modules/noctalia.nix
     ../../home-modules/cava.nix
