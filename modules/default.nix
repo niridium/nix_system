@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, ... }:
+{ ... }:
 {
   imports = [
     ./submodules/boot.nix
@@ -16,11 +16,11 @@
   };
   networking = {
     networkmanager.enable = true;
-  #   networkmanager.dns = "none";
-  #   nameservers = [
-  #     "194.242.2.3" # Mullvad
-  #     "1.1.1.1" # Cloudflare
-  #   ];
+    #   networkmanager.dns = "none";
+    #   nameservers = [
+    #     "194.242.2.3" # Mullvad
+    #     "1.1.1.1" # Cloudflare
+    #   ];
   };
   fonts = {
     enableDefaultPackages = true;
@@ -37,5 +37,8 @@
     gvfs.enable = true; # Filesystems tool for Nautilus
   };
 
-  environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ]; # Needed when Desktop Environment is installed with Home Manager
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ]; # Needed when Desktop Environment is installed with Home Manager
 }
