@@ -1,0 +1,31 @@
+{
+  config,
+  pkgsUnstable,
+  username,
+  ...
+}:
+{
+  # Backlight control
+  hardware.i2c.enable = true;
+  users.users.${username}.extraGroups = [ "i2c" ];
+
+  # Desktop Environment
+  programs.niri.enable = true;
+  services.greetd.settings = {
+    enable = true;
+    default_session = {
+      command = "${config.programs.niri.package}/bin/niri-session";
+      user = username;
+    };
+  };
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ]; # Needed when Desktop Environment is installed with Home Manager
+
+  environment.systemPackages = [
+    pkgsUnstable.gelly
+  ];
+
+  services.gvfs.enable = true; # Filesystems tool for Nautilus
+}

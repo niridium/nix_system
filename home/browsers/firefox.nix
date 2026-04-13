@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ inputs, ... }:
 {
   imports = [ inputs.arkenfox.hmModules.arkenfox ];
   programs.firefox = {
@@ -28,7 +28,7 @@
     #   PictureInPictureEnabled = false;
     #   SanitizeOnShutdown = {
     #     Cookies = false;
-    #     SiteSettings = false;        
+    #     SiteSettings = false;
     #   };
     # };
     profiles.default = {
@@ -38,7 +38,7 @@
           enable = true;
           # "0102"."browser.startup.page".value = 3;
           "0103"."browser.startup.homepage".value = "https://glance.sole-alkaid.ts.net";
-          
+
         };
         "0200".enable = true;
         "0300" = {
@@ -75,26 +75,26 @@
         "5500".enable = true;
         "6000".enable = true;
       };
-    #   search = {
-    #     force = true;
-    #     default = "ddg";
-    #     engines = {
-    #       nix-packages = {
-    #         name = "Nix Packages";
-    #         urls = [{ template = "https://search.nixos.org/packages?query={searchTerms}"; }];
-    #       };
-    #       nixos-wiki = {
-    #         name = "NixOS Wiki";
-    #         urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
-    #       };
-    #     };
-    #   };
-    #   bookmarks.force = true;
-    #   bookmarks.settings = [
-    #     { name = "Redlib"; url = "https://redlib.sole-alkaid.ts.net"; }
-    #     { name = "NixOS Discourse"; url = "https://discourse.nixos.org"; }
-    #     { name = "NixOS Search"; url = "https://search.nixos.org"; }
-    #   ];     
+      #   search = {
+      #     force = true;
+      #     default = "ddg";
+      #     engines = {
+      #       nix-packages = {
+      #         name = "Nix Packages";
+      #         urls = [{ template = "https://search.nixos.org/packages?query={searchTerms}"; }];
+      #       };
+      #       nixos-wiki = {
+      #         name = "NixOS Wiki";
+      #         urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
+      #       };
+      #     };
+      #   };
+      #   bookmarks.force = true;
+      #   bookmarks.settings = [
+      #     { name = "Redlib"; url = "https://redlib.sole-alkaid.ts.net"; }
+      #     { name = "NixOS Discourse"; url = "https://discourse.nixos.org"; }
+      #     { name = "NixOS Search"; url = "https://search.nixos.org"; }
+      #   ];
     };
   };
 }

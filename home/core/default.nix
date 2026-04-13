@@ -1,15 +1,15 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 {
   imports = [
-    ./submodules/essentials.nix
-    ./submodules/bash.nix
-    ./submodules/ssh.nix
-    ./submodules/git.nix
-    ./submodules/helix.nix
-    ./submodules/btop.nix
-    ./submodules/yazi.nix
-    ./submodules/ghostty.nix
-    ./submodules/eza.nix
+    ./bash.nix
+    ./eza.nix
+    ./git.nix
+    ./helix.nix
+    ./keepassxc.nix
+    ./ssh.nix
   ];
   home = {
     username = "nixy";
@@ -26,15 +26,13 @@
       pkgs.ggshield
       pkgs.git-conventional-commits
       pkgs.pre-commit
-      pkgs.nautilus
     ];
   };
   xdg.autostart.enable = true;
   programs.home-manager.enable = true;
-
-  dconf.enable = true;
-
-  # services = {
-  #   udiskie.enable = true; # Auto mount USB Storage Devices
-  # };
+  programs = {
+    starship.enable = true;
+    zoxide.enable = true;
+    fzf.enable = true;
+  };
 }

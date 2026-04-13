@@ -26,65 +26,81 @@
       url = "github:noctalia-dev/noctalia-shell/v4.7.5";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # zen-browser = {
+    #   url = "github:youwen5/zen-browser-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     arkenfox.url = "github:dwarfmaster/arkenfox-nixos";
   };
-  outputs = inputs@{
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    impermanence,
-    disko,
-    nix-index-database,
-    home-manager,
-    niri,
-    noctalia,
-    zen-browser,
-    sops-nix,
-    arkenfox,
-    ...
-  }:
-  {
-    nixosConfigurations.vega = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./hosts/vega/configuration.nix
-        impermanence.nixosModules.impermanence
-        disko.nixosModules.disko
-        nix-index-database.nixosModules.default
-        sops-nix.nixosModules.default
-        niri.nixosModules.niri
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.nixy = ./hosts/vega/home.nix;
-          home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.backupFileExtension = "bkp";
-        }
-      ];
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      impermanence,
+      disko,
+      nix-index-database,
+      home-manager,
+      niri,
+      noctalia,
+      # zen-browser,
+      sops-nix,
+      arkenfox,
+      ...
+    }:
+    {
+      nixosConfigurations = {
+        vega =
+          let
+            username = "nixy";
+            hostname = "vega";
+            specialArgs = { inherit inputs username hostname; };
+          in
+          nixpkgs.lib.nixosSystem {
+            inherit specialArgs;
+            system = "x86_64-linux";
+            modules = [
+              ./hosts/vega
+              disko.nixosModules.disko
+              nix-index-database.nixosModules.default
+              sops-nix.nixosModules.default
+              niri.nixosModules.niri
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.${username} = ./home/hosts/vega.nix;
+                home-manager.extraSpecialArgs = { inherit inputs; };
+                home-manager.backupFileExtension = "bkp";
+              }
+            ];
+          };
+        licher =
+          let
+            username = "nixy";
+            hostname = "licher";
+            specialArgs = { inherit inputs username hostname; };
+          in
+          nixpkgs.lib.nixosSystem {
+            inherit specialArgs;
+            system = "x86_64-linux";
+            modules = [
+              ./hosts/licher
+              sops-nix.nixosModules.default
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.${username} = ./home/hosts/licher.nix;
+                home-manager.extraSpecialArgs = { inherit inputs; };
+                home-manager.backupFileExtension = "bkp";
+              }
+            ];
+          };
+      };
     };
-    nixosConfigurations.licher = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./hosts/licher/configuration.nix
-        sops-nix.nixosModules.default
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.nixy = ./hosts/licher/home.nix;
-          home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.backupFileExtension = "bkp";
-        }
-      ];
-    };
-  };
 }
