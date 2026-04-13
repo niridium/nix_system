@@ -11,11 +11,11 @@
 
   # Desktop Environment
   programs.niri.enable = true;
-  services.greetd.settings = {
+  services.greetd = {
     enable = true;
-    default_session = {
+    settings.default_session = {
       command = "${config.programs.niri.package}/bin/niri-session";
-      user = username;
+      user = "${username}";
     };
   };
   environment.pathsToLink = [
