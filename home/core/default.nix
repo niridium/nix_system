@@ -15,9 +15,7 @@
     username = "nixy";
     homeDirectory = "/home/nixy";
     sessionPath = [
-      "$HOME/nixos"
-      "$HOME/my_scripts"
-      "$HOME/my_scripts/nixos"
+      "$HOME/my-scripts"
     ];
     packages = [
       pkgs.nvd
