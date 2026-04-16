@@ -6,15 +6,9 @@
     ../../modules/core
     ../../modules/tui
     ../../modules/filesystem/swap.nix
+    ../../modules/filesystem/swraid.nix
     ../../modules/services
     ../../modules/tailscale.nix
-  ];
-  boot = {
-    kernelParams = [ "amdgpu.virtual_display=0000:0c:00.0,1" ];
-    swraid.mdadmConf = "MAILADDR ruben.ledesma.go@protonmail.com";
-  };
-  environment.systemPackages = [
-    pkgs.mdadm
   ];
   services = {
     btrfs.autoScrub = {

@@ -93,12 +93,14 @@
             username = "nixy";
             hostname = "licher";
             swapspace = 8;
+            virtual_display = "amdgpu.virtual_display=0000:0c:00.0,1";
             specialArgs = {
               inherit
                 inputs
                 username
                 hostname
                 swapspace
+                virtual_display
                 ;
             };
           in
