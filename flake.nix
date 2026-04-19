@@ -94,6 +94,7 @@
             hostname = "licher";
             swapspace = 8;
             virtual_display = "amdgpu.virtual_display=0000:0c:00.0,1";
+            interface = "enp9s0";
             specialArgs = {
               inherit
                 inputs
@@ -101,6 +102,7 @@
                 hostname
                 swapspace
                 virtual_display
+                interface
                 ;
             };
           in

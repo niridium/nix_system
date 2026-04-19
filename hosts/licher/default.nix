@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   system.stateVersion = "25.11";
   imports = [
@@ -9,6 +8,7 @@
     ../../modules/filesystem/swraid.nix
     ../../modules/services
     ../../modules/tailscale.nix
+    ../../modules/wakeonlan.nix
   ];
   services = {
     btrfs.autoScrub = {
