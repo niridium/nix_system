@@ -5,6 +5,7 @@
     ../../modules/core
     ../../modules/tui
     ../../modules/filesystem
+    ../../modules/btrfs_subvolumes.nix
     ../../modules/filesystem/swraid.nix
     ../../modules/services
     ../../modules/tailscale.nix
