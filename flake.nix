@@ -116,6 +116,7 @@
             modules = [
               ./hosts/licher
               sops-nix.nixosModules.default
+              disko.nixosModules.disko
               home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;
