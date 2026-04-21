@@ -2,7 +2,9 @@
 {
   services.jellyfin = {
     enable = true;
-    dataDir = "/storage/services/jellyfin";
+    dataDir = "/home/nixy/storage/services/jellyfin";
+    user = "nixy";
+    group = "users";
   };
   environment.systemPackages = [
     pkgs.jellyfin

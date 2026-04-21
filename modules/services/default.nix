@@ -1,7 +1,7 @@
 {
   imports = [
     ./glance.nix
-    ./invidious.nix
+    # ./invidious.nix
     ./jellyfin.nix
     # ./karakeep.nix
     # ./libretranslate.nix
