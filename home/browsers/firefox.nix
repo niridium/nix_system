@@ -5,7 +5,7 @@
     enable = true;
     arkenfox = {
       enable = true;
-      version = "140.0";
+      version = "140.1";
     };
     # languagePacks = [ "en-GB" "es-ES" ];
     # policies = {
