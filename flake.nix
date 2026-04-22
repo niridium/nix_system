@@ -95,7 +95,8 @@
             username = "nixy";
             hostname = "licher";
             swapspace = 8;
-            systemdisk = "";
+            systemdisk = "/dev/sdc";
+            serverdirectory = "/storage";
             virtual_display = "amdgpu.virtual_display=0000:0c:00.0,1";
             interface = "enp9s0";
             specialArgs = {
@@ -105,6 +106,7 @@
                 hostname
                 swapspace
                 systemdisk
+                serverdirectory
                 virtual_display
                 interface
                 ;
