@@ -3,6 +3,7 @@
   imports = [
     ../core
     ../tui
+    ../tui/beets.nix
     ../gui
     ../browsers/firefox.nix
     ../browsers/ladybird.nix
