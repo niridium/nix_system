@@ -1,8 +1,4 @@
 {
-  lib,
-  ...
-}:
-{
   imports = [
     ./audio.nix
     ./boot.nix
@@ -14,7 +10,7 @@
     ./users.nix
   ];
 
-  services.gnome.gnome-keyring.enable = lib.mkForce false;
+  programs.dconf.enable = true;
 
   console.keyMap = "colemak";
   time.timeZone = "Europe/Madrid";

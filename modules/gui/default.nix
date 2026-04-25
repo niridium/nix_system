@@ -10,15 +10,10 @@
   hardware.i2c.enable = true;
   users.users.${username}.extraGroups = [ "i2c" ];
 
-  # Desktop Environment
-  programs.niri = {
-    enable = true;
-    package = pkgs.niri-unstable;
-  };
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "${config.programs.niri.package}/bin/niri-session";
+      command = "${pkgs.niri}/bin/niri-session";
       user = "${username}";
     };
   };

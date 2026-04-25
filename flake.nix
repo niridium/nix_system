@@ -70,7 +70,6 @@
               disko.nixosModules.disko
               nix-index-database.nixosModules.default
               agenix.nixosModules.default
-              niri.nixosModules.niri
               home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;

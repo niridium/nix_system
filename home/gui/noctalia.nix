@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.noctalia.homeModules.default 
+    inputs.noctalia.homeModules.default
   ];
   programs.noctalia-shell = {
     enable = true;
@@ -19,7 +19,7 @@
         widgetSpacing = 6;
         contentPadding = 2;
         fontScale = 1;
-        enableExclusionZoneInset = false;
+        enableExclusionZoneInset = true;
         backgroundOpacity = 0.93;
         useSeparateOpacity = false;
         floating = false;
