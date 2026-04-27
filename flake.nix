@@ -1,7 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
     arkenfox.url = "github:dwarfmaster/arkenfox-nixos";
     direnv-instant.url = "github:Mic92/direnv-instant";
@@ -18,7 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
@@ -27,13 +26,12 @@
     };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell/v4.7.6";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs =
     inputs@{
       nix-index-database,
-      nixpkgs-unstable,
       direnv-instant,
       home-manager,
       impermanence,
@@ -58,7 +56,6 @@
             packages = [
               pre-commit
               git-conventional-commits
-              ggshield
             ];
           };
       };

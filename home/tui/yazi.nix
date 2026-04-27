@@ -1,14 +1,25 @@
 {
   programs.yazi = {
     enable = true;
+    shellWrapperName = "y";
     settings = {
       mgr = {
-        ratio = [1 2 5];
+        ratio = [
+          1
+          2
+          5
+        ];
         sort_by = "size";
         sort_reverse = true;
         sort_dir_first = true;
         linemode = "permissions";
-        mouse_events = [ "click" "scroll" "touch" "move" "drag" ];
+        mouse_events = [
+          "click"
+          "scroll"
+          "touch"
+          "move"
+          "drag"
+        ];
       };
       preview = {
         wrap = "yes";

@@ -1,8 +1,6 @@
-{ pkgsUnstable, ... }:
 {
   services.redlib = {
     enable = true;
-    package = pkgsUnstable.redlib;
     settings = {
       REDLIB_SFW_ONLY = "off";
       REDLIB_DEFAULT_THEME = "nord";

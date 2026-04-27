@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  pkgsUnstable,
   username,
   ...
 }:
@@ -21,10 +19,6 @@
     "/share/applications"
     "/share/xdg-desktop-portal"
   ]; # Needed when Desktop Environment is installed with Home Manager
-
-  environment.systemPackages = [
-    pkgsUnstable.gelly
-  ];
 
   services.gvfs.enable = true; # Filesystems tool for Nautilus
 }

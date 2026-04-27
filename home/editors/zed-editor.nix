@@ -3,11 +3,14 @@
   programs.zed-editor = {
     enable = true;
     extensions = [ ];
-    extraPackages = [ pkgs.nixd ];
+    extraPackages = [
+      pkgs.nixd
+      pkgs.nil
+    ];
     userSettings = {
       edit_predictions.mode = "eager";
       agent = {
-        play_sound_when_agent_done = true;
+        play_sound_when_agent_done = "when_hidden";
       };
       calls.mute_on_join = true;
       git = {
@@ -18,7 +21,6 @@
         git_gutter = "tracked_files";
       };
       collaboration_panel.button = false;
-      notification_panel.button = false;
       outline_panel = {
         auto_reveal_entries = true;
         auto_fold_dirs = true;

@@ -6,7 +6,6 @@
     ./nix_ld.nix
     ./nix_settings.nix
     ./oom.nix
-    ./unstable_packages.nix
     ./users.nix
   ];
 

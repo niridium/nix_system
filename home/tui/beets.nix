@@ -20,6 +20,7 @@
         "missing"
         "info"
       ];
+      replaygain.command = "mp3gain";
     };
   };
 }

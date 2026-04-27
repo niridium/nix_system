@@ -14,5 +14,6 @@
     pkgs.showtime
     pkgs.mpv
     pkgs.tutanota-desktop
+    pkgs.gelly
   ];
 }
