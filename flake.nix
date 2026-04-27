@@ -4,6 +4,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
     arkenfox.url = "github:dwarfmaster/arkenfox-nixos";
+    direnv-instant.url = "github:Mic92/direnv-instant";
     impermanence = {
       url = "github:nix-community/impermanence";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +34,7 @@
     inputs@{
       nix-index-database,
       nixpkgs-unstable,
+      direnv-instant,
       home-manager,
       impermanence,
       arkenfox,
@@ -45,6 +47,21 @@
       ...
     }:
     {
+      devShells.x86_64-linux = {
+        default =
+          let
+            system = "x86_64-linux";
+            pkgs = import nixpkgs { inherit system; };
+          in
+          with pkgs;
+          mkShell {
+            packages = [
+              pre-commit
+              git-conventional-commits
+              ggshield
+            ];
+          };
+      };
       nixosConfigurations = {
         vega =
           let

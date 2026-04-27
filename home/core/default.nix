@@ -6,6 +6,7 @@
   imports = [
     ./age.nix
     ./bash.nix
+    ./dev.nix
     ./eza.nix
     ./git.nix
     ./helix.nix
