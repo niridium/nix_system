@@ -4,6 +4,7 @@
   imports = [
     ../core
     ../tui
+    ../services/ollama.nix
     inputs.noctalia.homeModules.default
   ];
 }
