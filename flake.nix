@@ -67,8 +67,11 @@
           with pkgs;
           mkShell {
             packages = [
-              pre-commit
               git-conventional-commits
+              nil
+              nixd
+              nixfmt
+              pre-commit
             ];
           };
       };

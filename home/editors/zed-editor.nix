@@ -1,90 +1,165 @@
-{ pkgs, ... }:
+{ pkgs
+, ... }:
 {
   programs.zed-editor = {
     enable = true;
     extensions = [ ];
-    extraPackages = [
-      pkgs.nixd
-      pkgs.nil
+    extraPackages = with pkgs; [
     ];
     userSettings = {
-      edit_predictions.mode = "eager";
+      # === Agent & Predictions ===
       agent = {
         play_sound_when_agent_done = "when_hidden";
       };
-      calls.mute_on_join = true;
+      edit_predictions.mode = "eager";
+
+      # === Autosave ===
+      autosave = "on_focus_change";
+
+      # === Cursor ===
+      cursor_blink = true;
+      cursor_shape = "underline";
+
+      # === Diagnostics ===
+      diagnostics = {
+        inline.enabled = true;
+      };
+
+      # === File Finder ===
+      file_finder = {
+        file_icons = true;
+      };
+
+      # === Git ===
       git = {
+        git_gutter = "tracked_files";
         inline_blame = {
           enabled = true;
           show_commit_summary = true;
         };
-        git_gutter = "tracked_files";
       };
-      collaboration_panel.button = false;
-      outline_panel = {
-        auto_reveal_entries = true;
-        auto_fold_dirs = true;
-        git_status = true;
-        folder_icons = true;
-        file_icons = true;
-        button = true;
+
+      # === Gutter ===
+      gutter = {
+        folds = false;
       };
-      use_system_window_tabs = true;
-      bottom_dock_layout = "right_aligned";
-      tabs = {
-        show_close_button = "hidden";
-        show_diagnostics = "all";
-        file_icons = true;
-        git_status = true;
-      };
-      tab_bar = {
-        show = true;
-        show_tab_bar_buttons = false;
-        show_nav_history_buttons = false;
-      };
-      title_bar = {
-        show_menus = false;
-        show_user_menu = true;
-        show_sign_in = false;
-        show_branch_icon = true;
-      };
-      search.button = false;
-      status_bar = {
-        cursor_position_button = true;
-        active_language_button = true;
-      };
-      project_panel = {
-        hide_root = true;
-        indent_size = 12;
-        git_status = true;
-        entry_spacing = "standard";
-        default_width = 250;
-      };
-      file_finder.file_icons = true;
-      diagnostics.inline.enabled = true;
+
+      # === Helix ===
+      helix_mode = true;
+
+      # === Indentation ===
       indent_guides = {
         active_line_width = 10;
-        line_width = 2;
         background_coloring = "disabled";
         coloring = "indent_aware";
         enabled = true;
+        line_width = 2;
       };
-      minimap.show = "never";
-      gutter.folds = false;
-      sticky_scroll.enabled = false;
-      scroll_beyond_last_line = "vertical_scroll_margin";
-      autosave = "on_focus_change";
-      base_keymap = "VSCode";
-      cursor_shape = "underline";
-      cursor_blink = true;
+
+      # === Layout & Window ===
+      bottom_dock_layout = "right_aligned";
+      title_bar = {
+        show_branch_icon = true;
+        show_menus = false;
+        show_sign_in = false;
+        show_user_menu = true;
+      };
+      use_system_window_tabs = true;
+
+      # === Minimaps ===
+      minimap = {
+        show = "never";
+      };
+
+      # === Panels ===
+      collaboration_panel = {
+        button = false;
+      };
       git_panel = {
+        dock = "right";
         status_style = "icon";
         tree_view = true;
-        dock = "right";
       };
-      terminal.button = false;
-      helix_mode = true;
-      theme.mode = "system";
+      outline_panel = {
+        auto_fold_dirs = true;
+        auto_reveal_entries = true;
+        button = true;
+        file_icons = true;
+        folder_icons = true;
+        git_status = true;
+      };
+      project_panel = {
+        default_width = 250;
+        entry_spacing = "standard";
+        git_status = true;
+        hide_root = true;
+        indent_size = 12;
+      };
+
+      # === Search ===
+      search = {
+        button = false;
+      };
+
+      # === Scroll ===
+      scroll_beyond_last_line = "vertical_scroll_margin";
+      sticky_scroll = {
+        enabled = false;
+
+      };
+
+      # === Status Bar ===
+      status_bar = {
+        active_language_button = true;
+        cursor_position_button = true;
+      };
+
+      # === Terminal ===
+      terminal = {
+        button = false;
+      };
+
+      # === Theme ===
+      theme = {
+        mode = "system";
+      };
+
+      # === Tabs ===
+      tab_bar = {
+        show = true;
+        show_nav_history_buttons = false;
+        show_tab_bar_buttons = false;
+      };
+      tabs = {
+        file_icons = true;
+        git_status = true;
+        show_close_button = "hidden";
+        show_diagnostics = "all";
+      };
+
+      # === Calls ===
+      calls = {
+        mute_on_join = true;
+      };
+
+      # === Languages ===
+      languages = {
+        Nix = {
+          language_servers = [
+            "nil"
+            "nixd"
+          ];
+          formatter = {
+            external = {
+              arguments = [
+                "--"
+                "--quiet"
+              ];
+              command = "nixfmt";
+            };
+          };
+        };
+      };
     };
   };
 }

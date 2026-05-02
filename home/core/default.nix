@@ -21,7 +21,6 @@
     ];
     packages = [
       pkgs.nvd
-      pkgs.nil
       pkgs.fastfetch
     ];
   };
