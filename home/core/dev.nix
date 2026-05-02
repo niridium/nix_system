@@ -19,7 +19,6 @@
           nix flake new -t github:niridium/nix-shells .
           echo "created flake.nix"
         elif [ ! -e .envrc ]; then
-          echo "nix_direnv_manual_reload" > .envrc
           echo "use flake" >> .envrc
           echo "created .envrc"
           direnv allow
