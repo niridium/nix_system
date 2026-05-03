@@ -2,9 +2,9 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      nixos-switch = "nixos-rebuild build && nvd diff /run/current-system result && nixos-rebuild switch --sudo";
-      nixos-build = "nixos-rebuild build && nvd diff /run/current-system result";
-      nixos-build-update = "nix flake update && nixos-rebuild build && nvd diff /run/current-system result";
+      nixos-switch = "nh os switch --max-jobs 8 ~/nix-system/";
+      nixos-build = "nh os build --max-jobs 8 ~/nix-system/";
+      nixos-build-update = "nh os build --no-update-lock-file --max-jobs 8 --update ~/nix-system/";
       ls = "eza";
       nix-search = "nix run nixpkgs#nix-search-cli -- -dr";
     };
