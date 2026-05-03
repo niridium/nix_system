@@ -59,7 +59,6 @@
       # === Layout & Window ===
       bottom_dock_layout = "right_aligned";
       title_bar = {
-        show_branch_icon = true;
         show_menus = false;
         show_sign_in = false;
         show_user_menu = true;
