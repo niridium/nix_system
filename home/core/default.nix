@@ -11,6 +11,7 @@
     ./git.nix
     ./helix.nix
     ./keepassxc.nix
+    ./nh.nix
     ./ssh.nix
   ];
   home = {
